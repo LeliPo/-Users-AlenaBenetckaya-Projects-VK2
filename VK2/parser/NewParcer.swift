@@ -1,6 +1,6 @@
 //
 //  NewParcerImp.swift
-//  GBVK
+//  VK2
 //
 //  Created by Алёна Бенецкая on 19.10.2017.
 //  Copyright © 2017 Алёна Бенецкая. All rights reserved.

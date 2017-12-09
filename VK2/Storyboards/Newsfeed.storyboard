@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FGf-u7-P3M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cyj-p6-E5v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Новости-->
+        <!--News FeedVC-->
         <scene sceneID="sRh-BU-MQ8">
             <objects>
                 <tableViewController id="FGf-u7-P3M" customClass="NewsFeedVC" customModule="VK2" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,9 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bTO-XS-pA6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Новая запись"/>
+                            <connections>
+                                <segue destination="qVI-JM-gDZ" kind="show" id="ME6-6y-ql8"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCell" rowHeight="-1" id="7zm-Y7-fba" customClass="NewCell" customModule="VK2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7zm-Y7-fba" id="RWv-S2-lvZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="499.5"/>
@@ -151,18 +161,152 @@
                             <outlet property="delegate" destination="FGf-u7-P3M" id="Nln-Bj-Gpg"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Новости" id="T5g-a8-uOd"/>
+                    <navigationItem key="navigationItem" id="TdX-Fm-PiR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBD-yh-0mn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296.80000000000001" y="-90.404797601199405"/>
+            <point key="canvasLocation" x="636" y="-90.404797601199405"/>
+        </scene>
+        <!--новая запись-->
+        <scene sceneID="gie-NP-fEH">
+            <objects>
+                <viewController id="qVI-JM-gDZ" customClass="PostAddVC" customModule="VK2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sPK-Um-4Zj" customClass="PostAddCell" customModule="VK2" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gm-un-rbW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="введите текст" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="77R-R8-gj3">
+                                <rect key="frame" x="24" y="94" width="327" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnr-3V-8Mp">
+                                <rect key="frame" x="327" y="64" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="map">
+                                    <color key="titleColor" red="0.98565378849999996" green="1" blue="0.90905688900000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleShadowColor" red="0.89330867690000004" green="1" blue="0.96076397609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="AmB-Ps-zr6" kind="show" id="5Na-oM-e7A"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-Oa-frg">
+                                <rect key="frame" x="24" y="181" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y58-di-gpn">
+                                <rect key="frame" x="24" y="217" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-ne-yhh">
+                                <rect key="frame" x="24" y="246" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9HG-oH-jFh"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="новая запись" id="mrr-Ui-h2S">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="RF1-eg-rVE">
+                            <connections>
+                                <action selector="postButtonPressed:" destination="qVI-JM-gDZ" id="I9C-gF-Jfs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="locCity" destination="edz-Oa-frg" id="HXL-6P-OrS"/>
+                        <outlet property="locLat" destination="y58-di-gpn" id="xgg-9b-BW9"/>
+                        <outlet property="locLong" destination="cLX-ne-yhh" id="Dgt-XR-hsF"/>
+                        <outlet property="postText" destination="77R-R8-gj3" id="gTT-er-aCC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2SV-50-CiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388" y="-90.404797601199405"/>
+        </scene>
+        <!--Map LocationVC-->
+        <scene sceneID="MBm-AC-HUr">
+            <objects>
+                <viewController id="AmB-Ps-zr6" customClass="MapLocationVC" customModule="VK2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Je-SP-zHQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Shc-dK-0hT">
+                                <rect key="frame" x="16" y="64" width="343" height="539"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wt6-Ml-Ep9">
+                                <rect key="frame" x="273" y="81" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Сохранить">
+                                    <color key="titleColor" red="1" green="0.56074418074244292" blue="0.068953324200243471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="savePost:" destination="AmB-Ps-zr6" eventType="touchUpInside" id="ztl-hx-Qjd"/>
+                                    <action selector="unwindFromMapKit:" destination="7Mr-3Y-h14" eventType="touchUpInside" id="t8X-qs-OvQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Shc-dK-0hT" firstAttribute="centerY" secondItem="9Je-SP-zHQ" secondAttribute="centerY" id="WAp-0j-7JI"/>
+                            <constraint firstItem="Shc-dK-0hT" firstAttribute="centerX" secondItem="9Je-SP-zHQ" secondAttribute="centerX" id="ah5-uQ-LCb"/>
+                            <constraint firstItem="Shc-dK-0hT" firstAttribute="leading" secondItem="9Je-SP-zHQ" secondAttribute="leadingMargin" id="cqz-VI-uxU"/>
+                            <constraint firstItem="Shc-dK-0hT" firstAttribute="top" secondItem="7Dy-BE-Q1P" secondAttribute="top" id="ghf-rz-Smh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Dy-BE-Q1P"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Shc-dK-0hT" id="ItJ-99-ul2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xlg-Ua-kre" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7Mr-3Y-h14" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2104.8000000000002" y="-90.404797601199405"/>
+        </scene>
+        <!--Новости-->
+        <scene sceneID="oLj-Xh-NQg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cyj-p6-E5v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" id="T5g-a8-uOd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8m4-2B-ztI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FGf-u7-P3M" kind="relationship" relationship="rootViewController" id="hAH-3k-XFy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d2E-Sd-yUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-158" y="-90"/>
         </scene>
     </scenes>
     <resources>
         <image name="comment" width="25" height="25"/>
         <image name="eye" width="25" height="25"/>
         <image name="heart" width="25" height="25"/>
+        <image name="map" width="30" height="32"/>
         <image name="repost" width="25" height="25"/>
         <image name="smallTree" width="256" height="256"/>
     </resources>
